@@ -1,11 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>mam mokro w gaciach</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDT - Logowanie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .remember a {
+            margin-left: auto;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .remember a:hover {
+            text-decoration: underline;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .signup {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .signup a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .signup a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <h1>ohohohoh</h1>
-  <p>kajwal wsadz mi please</p>
+    <div class="container">
+        <div class="logo">
+            <h1>MDT</h1>
+            <p>System Zarządzania</p>
+        </div>
+        
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="username">Nazwa użytkownika</label>
+                <input type="text" id="username" name="username" required placeholder="Wpisz login">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="password" id="password" name="password" required placeholder="Wpisz hasło">
+            </div>
+            
+            <div class="remember">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember" style="margin-bottom: 0;">Zapamiętaj mnie</label>
+                <a href="#">Zapomniałeś hasła?</a>
+            </div>
+            
+            <button type="submit">Zaloguj się</button>
+        </form>
+        
+        <div class="signup">
+            Nie masz konta? <a href="#">Zarejestruj się</a>
+        </div>
+    </div>
+    
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Walidacja
+            if (username.length < 3) {
+                alert('Nazwa użytkownika musi mieć co najmniej 3 znaki');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('Hasło musi mieć co najmniej 6 znaków');
+                return;
+            }
+            
+            // Symulacja logowania
+            console.log('Login attempt:', { username, remember });
+            alert('Zalogowano jako: ' + username);
+            
+            // Tutaj dodaj rzeczywiste logowanie
+            // window.location.href = '/dashboard';
+        }
+    </script>
 </body>
 </html>
